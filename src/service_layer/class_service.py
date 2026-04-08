@@ -28,5 +28,9 @@ class ClassService:
 
     def remove(self, course_id: int):
         course_dao.remove(course_id)
+
+    def get_professors_courses(self, professor_id: int):
+        return course_dao.get_professors_courses(professor_id)
+    
         
         

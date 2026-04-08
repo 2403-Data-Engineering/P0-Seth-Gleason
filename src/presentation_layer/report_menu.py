@@ -23,10 +23,10 @@ Report Menu
 
             case '2':
                 id: int = int(self.get_input("Enter Student id: ", Validator.ID))
-                report_writer.course_report(id)
+                report_writer.student_report(id)
 
             case '3':
                 id: int = int(self.get_input("Enter Professor id: ", Validator.ID))
-                report_writer.course_report(id)
+                report_writer.professor_report(id)
 
         self.terminal.navigate('main_menu')

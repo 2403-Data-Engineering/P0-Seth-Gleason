@@ -31,4 +31,4 @@ class ProfessorService:
         first_name = professor_dao.get_professor_by_id(id).get('first_name')
         last_name = professor_dao.get_professor_by_id(id).get('last_name')
 
-        return last_name +", "+ first_name
+        return first_name + " " + last_name

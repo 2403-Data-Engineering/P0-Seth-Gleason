@@ -34,4 +34,7 @@ class StudentService:
         first_name = student_dao.get_student_by_id(id).get('first_name')
         last_name = student_dao.get_student_by_id(id).get('last_name')
 
-        return last_name +", "+ first_name
+        return first_name + " " + last_name
+
+    def get_courses(self, id: int):
+        return student_dao.get_courses(id)

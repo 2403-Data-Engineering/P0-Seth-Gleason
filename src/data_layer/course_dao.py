@@ -40,7 +40,7 @@ def enroll_student(student_id: int, course_id: int):
 def drop_student_from_course(student_id: int, course_id: int):
     with get_connection() as conn:
         cursor = conn.cursor(dictionary=True)
-        cursor.execute("DELETE FROM enrollments WHERE student_id = %s, course_id = %s" [student_id, course_id])
+        cursor.execute("DELETE FROM enrollments WHERE student_id = %s AND course_id = %s", (student_id, course_id))
 
 def get_students_in_course(course_id: int):
     with get_connection() as conn:
@@ -52,3 +52,9 @@ def remove(course_id: int):
     with get_connection() as conn:
         cursor = conn.cursor(dictionary=True)
         cursor.execute("DELETE FROM professors WHERE id = %s", [course_id])
+
+def get_professors_courses(professor_id: int):
+    with get_connection() as conn:
+        cursor = conn.cursor(dictionary=True)
+        cursor.execute("SELECT id FROM courses WHERE professor_id = %s", [professor_id])
+        return cursor.fetchall()

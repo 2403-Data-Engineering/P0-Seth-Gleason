@@ -1,5 +1,5 @@
-from menu import Menu
-from main_menu import MainMenu
+from presentation_layer.menu import Menu, Validator
+# from main_menu import MainMenu
 from Models.professor import Professor
 
 class NewProfessorMenu(Menu):
@@ -10,19 +10,16 @@ New Professor Menu
 -=-=-=-=-=-=-=-=-=- 
               """)
         
-        print("Enter first name: ")
-        first_name: str = input()
+        first_name: str = self.get_input("Enter first name: ",Validator.NAME)
 
-        print("Enter last name: ")
-        last_name: str = input()
+        last_name: str = self.get_input("Enter last name: ",Validator.NAME)
 
         print("Enter department: ")
         department: str = input()
 
-        print("Enter email: ")
-        email: str = input()
+        email: str = self.get_input("Enter email: ",Validator.EMAIL)
 
-        new_professor: Professor = Professor(first_name, last_name, department, email)
-        self.terminal.student_service.save(new_professor)
-
-        self.terminal.navigate(MainMenu(self.terminal))
+        new_professor: Professor = Professor(None, first_name, last_name, department, email)
+        professor = self.terminal.professor_service.save(new_professor)
+        print(professor)
+        self.terminal.navigate('main_menu')

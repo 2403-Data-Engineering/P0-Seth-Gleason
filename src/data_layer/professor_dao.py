@@ -39,7 +39,7 @@ def update_first_name(new_first_name: str, id: int):
 def update_last_name(new_last_name: str, id: int):
     with get_connection() as conn:
         cursor = conn.cursor(dictionary=True)
-        cursor.execute("UPDATE professors SET first_name = %s WHERE id = %s", [new_last_name,id])
+        cursor.execute("UPDATE professors SET last_name = %s WHERE id = %s", [new_last_name,id])
 
 def update_department(department: str, id: int):
     with get_connection() as conn:
